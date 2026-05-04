@@ -563,6 +563,7 @@
         background: rgba(201,150,10,0.04);
         cursor: grab;
         user-select: none;
+        touch-action: pan-y; /* browser handles vertical scroll natively; horizontal goes to JS */
       }
       .group-carousel-viewport.dragging { cursor: grabbing; }
 
@@ -1102,7 +1103,8 @@
               };
             });
 
-            // Touch drag
+            // Touch drag — touch-action: pan-y on viewport means browser handles
+            // vertical scroll natively; only horizontal reaches these handlers.
             viewport.addEventListener('touchstart', e => {
               const s = gc[gid];
               if (track) track.style.transition = 'none';
@@ -1123,19 +1125,16 @@
               const dx = Math.abs(e.touches[0].clientX - activeDrag.startX);
               const dy = Math.abs(e.touches[0].clientY - activeDrag.startY);
 
-              // Decide intent on first significant movement
-              if (!activeDrag.intentDecided && (dx > 6 || dy > 6)) {
+              if (!activeDrag.intentDecided && (dx > 8 || dy > 8)) {
                 activeDrag.intentDecided = true;
-                activeDrag.isHorizontal  = dx > dy;
+                activeDrag.isHorizontal  = dx > dy * 1.2; // favour horizontal slightly
               }
 
-              // Only act on confirmed horizontal swipes
               if (!activeDrag.isHorizontal) return;
 
-              e.preventDefault(); // block page scroll during horizontal swipe
               const pct = ((e.touches[0].clientX - activeDrag.startX) / activeDrag.vw) * 100;
               if (track) track.style.transform = `translateX(${activeDrag.startOffset + pct}%)`;
-            }, { passive: false });
+            }, { passive: true });
 
             viewport.addEventListener('touchend', e => {
               if (!activeDrag || activeDrag.id !== gid) return;
@@ -1145,7 +1144,7 @@
               const dx = e.changedTouches[0].clientX - startX;
               if (Math.abs(dx) > vw * 0.2) { dx < 0 ? gcNext(gid) : gcPrev(gid); }
               else applyGcTransform(gid, true);
-            });
+            }, { passive: true });
           }
         });
 
