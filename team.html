@@ -626,6 +626,13 @@
         min-width: 36px; text-align: right;
       }
     }
+
+    /* ── IMAGE PROTECTION ── */
+    img {
+      -webkit-user-drag: none;
+      user-drag: none;
+      -webkit-touch-callout: none;
+    }
   </style>
   <script src="config.js"></script>
 </head>
@@ -1321,7 +1328,14 @@
         }
       }
 
-      function handlePhotoClick() {
+      function handlePhotoClick(e) {
+        // On mobile, touchend fires before click — flag it so click doesn't double-count
+        if (e.type === 'touchend') { e.currentTarget._touchFired = true; return handleCount(); }
+        if (e.currentTarget._touchFired) { e.currentTarget._touchFired = false; return; }
+        handleCount();
+      }
+
+      function handleCount() {
         clicks++;
         clearTimeout(resetTimer);
         resetTimer = setTimeout(() => { clicks = 0; }, 30000);
@@ -1342,6 +1356,7 @@
               photo.dataset.easterEgg = '1';
               photo.classList.add('keturah-photo');
               photo.addEventListener('click', handlePhotoClick);
+              photo.addEventListener('touchend', handlePhotoClick);
             }
           }
         });
@@ -1352,6 +1367,14 @@
       setTimeout(tryAttach, 500);
     })();
 
+
+    // ── IMAGE PROTECTION — disable right-click and drag-save on all images ──
+    document.addEventListener('contextmenu', e => {
+      if (e.target.tagName === 'IMG') e.preventDefault();
+    });
+    document.addEventListener('dragstart', e => {
+      if (e.target.tagName === 'IMG') e.preventDefault();
+    });
   </script>
 </body>
 </html>
