@@ -280,6 +280,7 @@ var GOHAM_CONFIG = {
     { "name": "Sister Rebecca Phiri",       "role": "Women's Ministry",       "group": "Women's Ministry","photo": "images/teams/RebeccaPhiri"     },
     { "name": "Sister Sandra Batala",       "role": "Youth Leader / Usher",   "group": "Youth",          "photo": "images/teams/SandraBatala"      },
     { "name": "Brother Abraham Mwape",      "role": "Usher / Intercessor",    "group": "Ushers",         "photo": "images/teams/AbramhamMwape"     },
+    { "name": "Brother Gladson Sampa",      "role": "Media Team",             "group": "Media Team",     "photo": "images/teams/GladsonSampa"      },
     { "name": "Brother Daniel Gumbo",       "role": "Media Team",             "group": "Media Team",     "photo": "images/teams/DanielGumbo"       },
     { "name": "Brother James Mutale",       "role": "Media Team",             "group": "Media Team",     "photo": "images/teams/JamesMutale"       },
     { "name": "Sister Annet Chanda",        "role": "Media Team",             "group": "Media Team",     "photo": "images/teams/AnnetChanda"       },
