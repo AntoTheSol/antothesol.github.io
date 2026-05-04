@@ -1109,24 +1109,41 @@
               activeDrag = {
                 id: gid,
                 startX: e.touches[0].clientX,
+                startY: e.touches[0].clientY,
                 startOffset: -s.current * 100,
-                vw: viewport.offsetWidth
+                vw: viewport.offsetWidth,
+                intentDecided: false,
+                isHorizontal: false
               };
             }, { passive: true });
 
             viewport.addEventListener('touchmove', e => {
               if (!activeDrag || activeDrag.id !== gid) return;
-              const dx = e.touches[0].clientX - activeDrag.startX;
-              const pct = (dx / activeDrag.vw) * 100;
+
+              const dx = Math.abs(e.touches[0].clientX - activeDrag.startX);
+              const dy = Math.abs(e.touches[0].clientY - activeDrag.startY);
+
+              // Decide intent on first significant movement
+              if (!activeDrag.intentDecided && (dx > 6 || dy > 6)) {
+                activeDrag.intentDecided = true;
+                activeDrag.isHorizontal  = dx > dy;
+              }
+
+              // Only act on confirmed horizontal swipes
+              if (!activeDrag.isHorizontal) return;
+
+              e.preventDefault(); // block page scroll during horizontal swipe
+              const pct = ((e.touches[0].clientX - activeDrag.startX) / activeDrag.vw) * 100;
               if (track) track.style.transform = `translateX(${activeDrag.startOffset + pct}%)`;
-            }, { passive: true });
+            }, { passive: false });
 
             viewport.addEventListener('touchend', e => {
               if (!activeDrag || activeDrag.id !== gid) return;
-              const { startX, vw } = activeDrag;
+              const { startX, vw, isHorizontal } = activeDrag;
               activeDrag = null;
+              if (!isHorizontal) { applyGcTransform(gid, true); return; }
               const dx = e.changedTouches[0].clientX - startX;
-              if (Math.abs(dx) > vw * 0.15) { dx < 0 ? gcNext(gid) : gcPrev(gid); }
+              if (Math.abs(dx) > vw * 0.2) { dx < 0 ? gcNext(gid) : gcPrev(gid); }
               else applyGcTransform(gid, true);
             });
           }
