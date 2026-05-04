@@ -38,14 +38,15 @@ var GOHAM_CONFIG = {
      Each entry needs: title, date, desc, image path.         */
   "events": [
     {
-      "title": "Month of Unconditional Love",
-      "date":  "April 2026",
-      "desc":  "Join us this April as we celebrate God's unconditional love through worship, prayer, and community.",
+      "title": "Month of Greater Grace",
+      "date":  "May 2026",
+      "desc":  "This May we declare the theme of Greater Grace. Come expecting a Notable Miracle as we gather in worship, prayer, and the power of His Word.",
+      "quote": "And with great power the apostles gave witness to the resurrection of the Lord Jesus. And great grace was upon them all. — Acts 4:33",
       "image": "images/event-1.jpg"
     },
     {
-      "title": "Harvest Sunday Service",
-      "date":  "May 3, 2026",
+      "title": "Sunday Service",
+      "date":  "Sunday's 2026",
       "desc":  "An evening of thanksgiving, music, and fellowship. Bring the whole family.",
       "image": "images/event-2.jpg"
     },
@@ -148,11 +149,25 @@ var GOHAM_CONFIG = {
          • Videos — extension REQUIRED (e.g. .mp4, .webm, .mov).
        Add as many items as you like; they loop seamlessly.    */
     "bannerReel": [
-      "images/reel-1",
-      "images/reel-2",
-      "images/reel-3",
-      "images/reel-4",
-      "images/reel-5"
+      "images/reel1-1",
+      "images/reel1-2",
+      "images/reel1-3",
+      "images/reel1-4",
+      "images/reel1-5",
+      "images/reel1-6",
+    ],
+
+    /* ── Second reel strip (strip-2 — Pure Word/Worship/Deliverance section) ──
+       Completely independent from bannerReel above.
+       Add your own images/videos here — same rules apply:
+         • Images — extension optional (resolver tries .jpg/.jpeg/.png/.webp).
+         • Videos — extension REQUIRED (e.g. .mp4, .webm).              */
+    "bannerReel2": [
+      "images/reel2-1",
+      "images/reel2-2",
+      "images/reel2-3",
+      "images/reel2-4",
+      "images/reel2-5"
     ]
   },
 
@@ -264,11 +279,12 @@ var GOHAM_CONFIG = {
     { "name": "Sister Petronella Mutale",   "role": "Women's Ministry",       "group": "Women's Ministry","photo": "images/teams/PetronellaMutale" },
     { "name": "Sister Rebecca Phiri",       "role": "Women's Ministry",       "group": "Women's Ministry","photo": "images/teams/RebeccaPhiri"     },
     { "name": "Sister Sandra Batala",       "role": "Youth Leader / Usher",   "group": "Youth",          "photo": "images/teams/SandraBatala"      },
-    { "name": "Brother Abramham Mwape",     "role": "Usher / Intercessor",    "group": "Ushers",         "photo": "images/teams/AbramhamMwape"     },
-    { "name": "Brother Gabriel Zepeda",     "role": "Disciple",               "group": "Youth",          "photo": "images/teams/GabrielZepeda"     },
+    { "name": "Brother Abraham Mwape",      "role": "Usher / Intercessor",    "group": "Ushers",         "photo": "images/teams/AbramhamMwape"     },
     { "name": "Brother Daniel Gumbo",       "role": "Media Team",             "group": "Media Team",     "photo": "images/teams/DanielGumbo"       },
     { "name": "Brother James Mutale",       "role": "Media Team",             "group": "Media Team",     "photo": "images/teams/JamesMutale"       },
-    { "name": "Sister Annet Chanda",        "role": "Media Team",             "group": "Media Team",     "photo": "images/teams/AnnetChanda"       }
+    { "name": "Sister Annet Chanda",        "role": "Media Team",             "group": "Media Team",     "photo": "images/teams/AnnetChanda"       },
+    { "name": "Brother Emmanuel Ngo'nga",   "role": "Media Team",             "group": "Media Team",     "photo": "images/teams/EmmanuelNgonga"    },
+    { "name": "Brother Gabriel Zepeda",     "role": "Media Team",             "group": "Media Team",     "photo": "images/teams/GabrielZepeda"     }
   ]
 
 };

@@ -4,6 +4,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GOHAM — Meet the Team</title>
+  <!-- SEO & Social Sharing -->
+  <meta name="description" content="Meet the leadership and ministry team at Gates of Heaven Almighty Ministries International, Kitwe, Zambia.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Meet the Team — GOHAM Church">
+  <meta property="og:description" content="Meet the leadership and ministry team behind GOHAM — Gates of Heaven Almighty Ministries International, Kitwe, Zambia.">
+  <meta property="og:image" content="images/GohamDark.png">
+  <meta property="og:site_name" content="GOHAM Church">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Meet the Team — GOHAM Church">
+  <meta name="twitter:description" content="Meet the leadership and ministry team at GOHAM, Kitwe, Zambia.">
+  <meta name="twitter:image" content="images/GohamDark.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600&family=Lato:wght@300;400&display=swap" rel="stylesheet">
   <style>
@@ -305,6 +316,25 @@
     footer span { color: var(--gold); }
 
     /* ── SECTION DIVIDER STRIP ── */
+    .strip-reel-track {
+      position: absolute; top: 0; left: 0;
+      height: 100%; display: flex; gap: 0;
+      animation: reelScroll 55s linear infinite;
+      will-change: transform; z-index: 1;
+    }
+    @keyframes reelScroll {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+    .strip-reel-item {
+      flex: 0 0 auto; height: 100%; width: 580px; overflow: hidden;
+    }
+    .strip-reel-item img,
+    .strip-reel-item video {
+      width: 100%; height: 100%; object-fit: cover;
+      object-position: center top; display: block;
+    }
+
     .image-strip {
       position: relative; height: 42vh; min-height: 220px;
       overflow: hidden; display: flex;
@@ -337,17 +367,32 @@
     .strip-caption .strip-btn { pointer-events: all; }
 
     .strip-caption p {
-      font-family: 'Cinzel', serif; font-size: clamp(0.65rem, 1.5vw, 0.85rem);
+      font-family: 'Cinzel', serif; font-size: clamp(0.6rem, 3.8vw, 1.7rem);
       letter-spacing: 0.4em; text-transform: uppercase; color: var(--gold-light);
+      white-space: nowrap;
+      font-weight: 700;
       margin-bottom: 0.6rem;
       opacity: 0; transform: translateY(14px);
       transition: opacity 0.8s ease 0.6s, transform 0.8s ease 0.6s;
+      text-shadow:
+        0 0 2px rgba(0,0,0,1),
+        0 0 8px rgba(0,0,0,1),
+        0 0 18px rgba(0,0,0,0.95),
+        0 0 35px rgba(0,0,0,0.75),
+        0 1px 3px rgba(0,0,0,1);
     }
 
     .strip-caption h3 {
       font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2rem, 4.5vw, 3.8rem); font-weight: 600; font-style: italic;
-      color: #fff; text-shadow: 0 2px 20px rgba(0,0,0,0.5);
+      font-size: clamp(2rem, 4.5vw, 3.8rem); font-weight: 700; font-style: italic;
+      color: #fff;
+      text-shadow:
+        0 0 4px  rgba(0,0,0,1),
+        0 0 10px rgba(0,0,0,1),
+        0 0 22px rgba(0,0,0,0.95),
+        0 0 45px rgba(0,0,0,0.8),
+        0 0 70px rgba(0,0,0,0.5),
+        0 3px 6px rgba(0,0,0,1);
       opacity: 0; transform: translateY(14px);
       transition: opacity 0.8s ease 0.8s, transform 0.8s ease 0.8s;
     }
@@ -360,8 +405,13 @@
       border: 1px solid var(--gold);
       color: var(--gold-light);
       font-family: 'Cinzel', serif;
-      font-size: 0.65rem;
+      font-size: 0.85rem;
+      font-weight: 700;
       letter-spacing: 0.25em;
+      text-shadow:
+        0 0 4px rgba(0,0,0,0.95),
+        0 0 12px rgba(0,0,0,0.8),
+        0 0 24px rgba(0,0,0,0.55);
       text-transform: uppercase;
       text-decoration: none;
       position: relative;
@@ -378,7 +428,7 @@
       transition: transform 0.35s ease;
       z-index: -1;
     }
-    .strip-btn:hover { color: var(--black); }
+    .strip-btn:hover { color: var(--black); text-shadow: none; }
     .strip-btn:hover::before { transform: translateX(0); }
 
     .image-strip.strip-visible .strip-caption p,
@@ -413,6 +463,32 @@
     .loc-text a { color: var(--gold-light); text-decoration: none; transition: color 0.2s; }
     .loc-text a:hover { color: var(--white); }
     .map-box { width: 100%; border: 1px solid rgba(201,150,10,0.18); overflow: hidden; }
+    .directions-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.55rem;
+      width: 100%;
+      padding: 0.85rem 1.5rem;
+      background: rgba(14,26,46,0.0);
+      border: 1px solid rgba(201,150,10,0.5);
+      border-top: none;
+      color: var(--gold-light);
+      font-family: 'Cinzel', serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.25s, color 0.25s, border-color 0.25s;
+    }
+    .directions-btn:hover {
+      background: rgba(201,150,10,0.12);
+      border-color: var(--gold);
+      color: var(--white);
+    }
+    .directions-btn svg { flex-shrink: 0; }
+
     .map-box iframe { width: 100%; height: 380px; display: block; border: 0; filter: grayscale(30%) brightness(0.85); }
     .deco-pin {
       position: absolute; top: 2rem; left: 50%;
@@ -596,12 +672,11 @@
 
   <!-- SECTION DIVIDER -->
   <div class="image-strip" id="team-strip">
-    <img class="strip-img" src="images/banner-2.jpg" alt=""
-         onerror="this.parentElement.style.background='linear-gradient(135deg,#0E1A2E,#1A3A6E)'">
+    <div class="strip-reel-track" id="team-reel-track"></div>
     <div class="strip-curtain from-right"></div>
     <div class="strip-caption">
-      <p>Rooted in Faith</p>
-      <h3>Serving Together</h3>
+      <p>Pure Word · Pure Worship</p>
+      <h3>Pure Deliverance</h3>
       <a class="strip-btn" href="programs.html">View Programs →</a>
     </div>
   </div>
@@ -649,6 +724,12 @@
       </div>
       <div class="map-box reveal" style="transition-delay:0.2s">
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5537.649813557992!2d28.225611299999997!3d-12.775419!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x196ce700756715a1%3A0x27c7a540964814d6!2sGATES%20OF%20HEAVEN%20HQ!5e1!3m2!1sen!2sus!4v1776795733944!5m2!1sen!2sus" allowfullscreen loading="lazy"></iframe>
+        <a class="directions-btn" href="https://www.google.com/maps/dir/?api=1&destination=Gates+of+Heaven+Almighty+Ministries+International+Kitwe+Zambia" target="_blank" rel="noopener">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M21.71 11.29l-9-9a1 1 0 00-1.42 0l-9 9a1 1 0 000 1.42l9 9a1 1 0 001.42 0l9-9a1 1 0 000-1.42zM14 14.5V12h-4v3H8v-4a1 1 0 011-1h5V7.5l3.5 3.5-3.5 3.5z"/>
+          </svg>
+          Get Directions
+        </a>
       </div>
     </div>
   </section>
@@ -724,6 +805,34 @@
           img.src     = attempt;
         }
         tryNext();
+      });
+    }
+
+    function resolveMedia(path) {
+      // If path already has a recognised extension, use it directly
+      if (/\.(mp4|webm|mov)$/i.test(path)) return Promise.resolve({ src: path, type: 'video' });
+      if (/\.(jpg|jpeg|png|webp)$/i.test(path)) return Promise.resolve({ src: path, type: 'image' });
+      // Otherwise probe for images first, then video
+      const base = path.replace(/\.[^/.]+$/, '');
+      return new Promise(resolve => {
+        let i = 0;
+        function tryImg() {
+          if (i >= IMAGE_EXTS.length) { tryVideo(); return; }
+          const src = `${base}.${IMAGE_EXTS[i++]}`;
+          const img = new Image();
+          img.onload  = () => resolve({ src, type: 'image' });
+          img.onerror = tryImg;
+          img.src     = src;
+        }
+        function tryVideo() {
+          const src = base + '.mp4';
+          const vid = document.createElement('video');
+          vid.oncanloaddata = () => resolve({ src, type: 'video' });
+          vid.onerror = () => resolve({ src: path, type: 'image' });
+          vid.src = src;
+          resolve({ src, type: 'video' }); // optimistic for mp4
+        }
+        tryImg();
       });
     }
 
@@ -1033,6 +1142,19 @@
       if (vy && ch.youtube) { vy.textContent = ch.youtube.replace('https://',''); vy.href = ch.youtube; vy.target = '_blank'; }
       const vf = document.getElementById('visit-facebook');
       if (vf && ch.facebook) { vf.textContent = ch.facebook.replace('https://',''); vf.href = ch.facebook; vf.target = '_blank'; }
+
+      // Populate scrolling reel from config.images.bannerReel2
+      const reelItems2 = (data.images && data.images.bannerReel2) || [];
+      const reelTrack2 = document.getElementById('team-reel-track');
+      if (reelTrack2 && reelItems2.length) {
+        Promise.all(reelItems2.map(p => resolveMedia(p))).then(resolved => {
+          const buildItem = ({ src, type }) => type === 'video'
+            ? `<div class="strip-reel-item"><video src="${src}" autoplay muted loop playsinline preload="metadata"></video></div>`
+            : `<div class="strip-reel-item"><img src="${src}" alt="reel" loading="lazy"></div>`;
+          const html = resolved.map(buildItem).join('');
+          reelTrack2.innerHTML = html + html;
+        });
+      }
     }
 
     if (typeof GOHAM_CONFIG !== 'undefined') {
@@ -1050,6 +1172,186 @@
     const btt = document.getElementById('back-to-top');
     window.addEventListener('scroll', () => btt.classList.toggle('visible', window.scrollY > 300), { passive: true });
     btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    // ── EASTER EGG — Keturah ──
+    (function () {
+      const style = document.createElement('style');
+      style.textContent = `
+        /* Hearts */
+        @keyframes heartFloat {
+          0%   { transform: translateY(0) scale(1); opacity: 1; }
+          80%  { opacity: 1; }
+          100% { transform: translateY(-85vh) scale(0.4); opacity: 0; }
+        }
+        .easter-heart {
+          position: fixed; bottom: 8vh; pointer-events: none;
+          z-index: 99999; animation: heartFloat linear forwards;
+          user-select: none; line-height: 1;
+        }
+
+        /* Backdrop — fades in and STAYS until closed */
+        @keyframes secretBgIn {
+          from { opacity: 0; }
+          to   { opacity: 1; }
+        }
+        .easter-secret-backdrop {
+          position: fixed; inset: 0;
+          background: rgba(6,10,20,0.85);
+          backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+          z-index: 99990; pointer-events: none;
+          opacity: 0; animation: secretBgIn 0.6s ease forwards;
+        }
+
+        /* Secret image — pops in and STAYS until closed */
+        @keyframes secretImgIn {
+          0%   { opacity: 0; transform: translate(-50%, -50%) scale(0.85); }
+          100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+        }
+        .easter-secret-img {
+          position: fixed; top: 42%; left: 50%;
+          transform: translate(-50%, -50%);
+          max-width: min(78vw, 400px); max-height: 55vh;
+          object-fit: contain; z-index: 99995; pointer-events: none;
+          border-radius: 4px; box-shadow: 0 20px 60px rgba(0,0,0,0.7);
+          opacity: 0; animation: secretImgIn 0.7s ease 0.2s forwards;
+        }
+
+        /* SoundCloud player — slides up from bottom */
+        @keyframes playerSlideUp {
+          from { transform: translateY(100%); opacity: 0; }
+          to   { transform: translateY(0);    opacity: 1; }
+        }
+        .easter-player {
+          position: fixed; bottom: 0; left: 0; right: 0;
+          z-index: 99997;
+          background: rgba(10,16,32,0.96);
+          border-top: 1px solid rgba(201,150,10,0.45);
+          padding: 0.75rem 1rem 0.75rem;
+          animation: playerSlideUp 0.6s cubic-bezier(0.22,1,0.36,1) 0.5s both;
+        }
+        .easter-player-header {
+          display: flex; align-items: center;
+          justify-content: space-between;
+          margin-bottom: 0.55rem;
+        }
+        .easter-player-label {
+          font-family: 'Cinzel', serif;
+          font-size: 0.6rem; letter-spacing: 0.28em;
+          text-transform: uppercase; color: var(--gold-light);
+          text-shadow: 0 0 8px rgba(0,0,0,0.9);
+        }
+        .easter-player-close {
+          background: none;
+          border: 1px solid rgba(201,150,10,0.4);
+          color: var(--gold-light);
+          width: 28px; height: 28px;
+          display: flex; align-items: center; justify-content: center;
+          cursor: pointer; font-size: 0.85rem;
+          font-family: 'Cinzel', serif;
+          transition: border-color 0.2s, color 0.2s;
+          flex-shrink: 0;
+        }
+        .easter-player-close:hover { border-color: var(--gold); color: #fff; }
+        .easter-player iframe { display: block; width: 100%; border: 0; border-radius: 2px; }
+
+        /* Unified fade-out when closing */
+        @keyframes easterFadeOut {
+          to { opacity: 0; pointer-events: none; }
+        }
+        .easter-closing {
+          animation: easterFadeOut 0.5s ease forwards !important;
+        }
+
+        .keturah-photo { cursor: pointer; }`;
+      document.head.appendChild(style);
+
+      const EMOJIS = ['❤️','💕','💖','💗','💝','🩷'];
+      let clicks = 0, resetTimer = null;
+
+      function spawnHearts() {
+        // --- Backdrop ---
+        const backdrop = document.createElement('div');
+        backdrop.className = 'easter-secret-backdrop';
+        document.body.appendChild(backdrop);
+
+        // --- Secret image ---
+        const img = document.createElement('img');
+        img.className = 'easter-secret-img';
+        img.src = 'images/teams/secret.jpg';
+        document.body.appendChild(img);
+
+        // --- SoundCloud player ---
+        const player = document.createElement('div');
+        player.className = 'easter-player';
+        player.innerHTML = `
+          <div class="easter-player-header">
+            <span class="easter-player-label">Now Playing ♥</span>
+            <button class="easter-player-close" aria-label="Close">✕</button>
+          </div>
+          <iframe
+            src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/forrestfrank/only-be-you&color=%23c9960a&auto_play=true&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false"
+            height="80"
+            scrolling="no"
+            allow="autoplay">
+          </iframe>`;
+        document.body.appendChild(player);
+
+        // --- Close everything ---
+        function closeAll() {
+          [backdrop, img, player].forEach(el => {
+            el.classList.add('easter-closing');
+            el.addEventListener('animationend', () => el.remove(), { once: true });
+          });
+        }
+        player.querySelector('.easter-player-close').addEventListener('click', closeAll);
+
+        // --- Hearts burst ---
+        for (let i = 0; i < 35; i++) {
+          setTimeout(() => {
+            const h = document.createElement('span');
+            h.className = 'easter-heart';
+            h.textContent = EMOJIS[Math.floor(Math.random() * EMOJIS.length)];
+            h.style.left              = (Math.random() * 96) + 'vw';
+            h.style.fontSize          = (1.4 + Math.random() * 2.6) + 'rem';
+            h.style.animationDuration = (1.8 + Math.random() * 2.2) + 's';
+            h.style.animationDelay    = (Math.random() * 0.4) + 's';
+            document.body.appendChild(h);
+            h.addEventListener('animationend', () => h.remove());
+          }, i * 55);
+        }
+      }
+
+      function handlePhotoClick() {
+        clicks++;
+        clearTimeout(resetTimer);
+        resetTimer = setTimeout(() => { clicks = 0; }, 30000);
+        if (clicks >= 10) {
+          clicks = 0;
+          clearTimeout(resetTimer);
+          spawnHearts();
+        }
+      }
+
+      // Poll until her photo is in the DOM, then attach
+      let attempts = 0;
+      function tryAttach() {
+        document.querySelectorAll('.team-name').forEach(el => {
+          if (el.textContent.trim().includes('Keturah')) {
+            const photo = el.closest('.team-card')?.querySelector('.team-photo-ring img');
+            if (photo && !photo.dataset.easterEgg) {
+              photo.dataset.easterEgg = '1';
+              photo.classList.add('keturah-photo');
+              photo.addEventListener('click', handlePhotoClick);
+            }
+          }
+        });
+        const found = document.querySelector('[data-easter-egg]');
+        if (!found && ++attempts < 30) setTimeout(tryAttach, 500);
+      }
+
+      setTimeout(tryAttach, 500);
+    })();
+
   </script>
 </body>
 </html>
